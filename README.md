@@ -1,5 +1,34 @@
 # dataset-operator
-// TODO(user): Add simple overview of use/purpose
+
+Experiment for Dataset orchestration Operator.
+
+It learns from https://github.com/kubevirt/containerized-data-importer
+```
+apiVersion: dataset-ops.my.domain/v1
+kind: Dataset
+metadata:
+  name: "peter-dataset"
+spec:
+  source:
+      http:
+         url: "https://harbor-test2.cn-sh2.ufileos.com/docs/download/DCE5.0-intro.pdf" #S3 or GCS
+         secretRef: "" # Optional
+         certConfigMap: "" # Optional
+  pvc:
+    storageClassName: local-path
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: "64Mi"
+```
+
+
+
+
+
+
+
 
 ## Description
 // TODO(user): An in-depth paragraph about your project and overview of use
