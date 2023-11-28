@@ -1,0 +1,4 @@
+## Append samples of your project ##
+resources:
+- dataset-ops_v1_dataset.yaml
+#+kubebuilder:scaffold:manifestskustomizesamples
