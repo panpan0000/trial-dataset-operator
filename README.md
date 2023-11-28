@@ -23,8 +23,23 @@ spec:
         storage: "64Mi"
 ```
 
+Effect:
 
+```
+# kubectl get po
+NAME                           READY   STATUS             RESTARTS       AGE
+importer-peter-dataset         0/1     CrashLoopBackOff   6 (117s ago)   8m3s
 
+# kubectl get pvc
+NAME                  STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+peter-dataset         Bound     pvc-e27757ee-a8c3-42cd-a01f-8f2455af6a02   64Mi       RWO            local-path     8m6s
+
+## kubectl get pv pvc-e27757ee-a8c3-42cd-a01f-8f2455af6a02 -o yaml |grep local-path-provisioner
+    path: /opt/local-path-provisioner/pvc-e27757ee-a8c3-42cd-a01f-8f2455af6a02_default_peter-dataset
+
+# du -sh /opt/local-path-provisioner/pvc-e27757ee-a8c3-42cd-a01f-8f2455af6a02_default_peter-dataset/a.out
+1.4M	/opt/local-path-provisioner/pvc-e27757ee-a8c3-42cd-a01f-8f2455af6a02_default_peter-dataset/a.out
+```
 
 
 
