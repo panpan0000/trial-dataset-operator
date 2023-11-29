@@ -26,10 +26,25 @@ spec:
 Effect:
 
 ```
+#######################################
+# a dataset CR
+#######################################
+
+# kubectl get dataset
+NAME            PHASE       PROGRESS   RESTARTS   AGE
+peter-dataset   Completed      100%               8m
+
+#######################################
+###  temporary pod as a pre-loader/data-importer 
+#######################################
+
 # kubectl get po
 NAME                           READY   STATUS             RESTARTS       AGE
-importer-peter-dataset         0/1     CrashLoopBackOff   6 (117s ago)   8m3s
+importer-peter-dataset         0/1     Completed   6 (117s ago)   8m3s
 
+#######################################
+### check the underlying PV, yes, the data has been downloaded (so far, save as a.out for now)
+#####################################
 # kubectl get pvc
 NAME                  STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 peter-dataset         Bound     pvc-e27757ee-a8c3-42cd-a01f-8f2455af6a02   64Mi       RWO            local-path     8m6s
